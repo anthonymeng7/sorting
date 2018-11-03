@@ -21,8 +21,8 @@ public class heap {
         arr[1]=arr[size];
         arr[size]=0;
         int position = 1;
-        while((arr[position]<arr[position*2])||(arr[position]<arr[position*2+1])){
-            if(arr[position]<arr[position*2]&&arr[position]<arr[position*2+1]){
+        while((arr[position]>arr[position*2])||(arr[position]>arr[position*2+1])){
+            if(arr[position]>arr[position*2]&&arr[position]>arr[position*2+1]){
                 if(arr[position*2]<arr[position*2+1]){
                     int temp = arr[position*2];
                     arr[position*2]=arr[position];
@@ -34,12 +34,22 @@ public class heap {
                     arr[position]=temp;
                 }
             }
-            if(arr[position]<arr[position*2]){
-
+            else if(arr[position]>arr[position*2]){
+                int temp = arr[position];
+                arr[position]=arr[position*2];
+                arr[position*2]=temp;
+            }
+            else{
+                int temp = arr[position];
+                arr[position]=arr[position*2];
+                arr[position*2]=temp;
             }
         }
         size--;
         return arr[1];
     }
     public int getSize(){return size;}
+    public static void main(String[] args){
+
+    }
 }
